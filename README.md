@@ -15,7 +15,7 @@ PlanetConfig.url = "http://srv.api.facechat.im/";业务请求根路径地址
 #2.业务参数封装
 开发者在调用Facechat-server的接口时，需对传递的参数进行组装签名，参数组装规则如下：将要传递的方法参数以key,value的形式添加到Map中
 (如果value是复杂对象，请将该对象json序列化为字符串，当然如果复杂对象为空，则不需要将该key,value添加到Map中)，同时添加当前服务器
-时间ctime:{当前时间毫秒数}，签名方式sign_type:{MD5 or RSA}，appId:{appId}到Map中:
+时间ctime:{当前时间毫秒数},appId:{appId}到Map中:
 ```java
 Map map = ....
 map.put("appId","$!{appId}")
