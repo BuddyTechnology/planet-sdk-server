@@ -4,7 +4,7 @@
 长连接向指定用户推送系统消息。
 
 #1.配置
-在调用服务端之前，需要配置开发者自己的 AppID等信息:
+在调用服务端之前，需要配置开发者自己的 AppID等信息,AppID申请地址:https://top.facechat.im:
 ```java
 PlanetConfig.appId = "{appId}";
 PlanetConfig.appToken = "{appToken}";//重要信息，请认真保管
