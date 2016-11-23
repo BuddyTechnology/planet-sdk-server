@@ -69,15 +69,15 @@ public final class PlanetSDK {
 		return planetURL;
 	}
 
-	public static boolean sendIM(String[] tokens,String message) throws PlanetException{
+	public static boolean sendIM(String[] members,String message) throws PlanetException{
 		Map<String,String> params = new HashMap<String,String>();
-		params.put("tokens",JSON.toJSONString(tokens));
+		params.put("members",JSON.toJSONString(members));
 		params.put("message",message);
 		String result = signRequest(params,"/api/chat/sendIM");
 		return Boolean.parseBoolean(result);
 	}
 	
-	public static boolean sendIM(String token,String message) throws PlanetException{
-		return sendIM(new String[]{token},message);
+	public static boolean sendIM(String members,String message) throws PlanetException{
+		return sendIM(new String[]{members},message);
 	}
 }
