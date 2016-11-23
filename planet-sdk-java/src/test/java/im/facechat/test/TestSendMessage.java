@@ -7,7 +7,7 @@ public class TestSendMessage {
 
 	public static void main(String[] args) {
 		try{
-			System.out.println(PlanetSDK.sendIM("dbc3c0983b58f6ba-8976cca0-c61e-4f66-8ec7-1828b9a85a79","ni hao"));
+			System.out.println(PlanetSDK.sendIM("dbc3c0983b58f6ba-61d16dd5-d030-4d9f-b05f-9b68f60a9bac","ni hao"));
 		}catch(PlanetException e){
 			e.printStackTrace();
 		}
