@@ -7,7 +7,6 @@ public class Apns {
 	private String toMember;
 	private int incrBadges = 0;
 	private String content;
-	private String token;
 	private String sound;
 	private String title;
 	private boolean backgroud;
@@ -44,14 +43,6 @@ public class Apns {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
 	}
 
 	public String getSound() {
