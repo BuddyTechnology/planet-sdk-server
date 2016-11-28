@@ -19,7 +19,7 @@ public class TestSendApns {
 			apns.setContent("Hello");
 			apns.setTitle("Tiki-马甲");
 			apns.setIncrBadges(1);
-			System.out.println(PlanetSDK.sendApns("74281bf4333d-1a2857c6-9fc9-4641-9e05-5ab5d0a76af3",apns));
+			System.out.println(PlanetSDK.sendApns("66fd89018de2-b08d4e77-f0ec-4d3d-9cde-965f849a004f",apns));
 		}catch(PlanetException e){
 			e.printStackTrace();
 		}
