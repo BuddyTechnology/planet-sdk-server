@@ -7,6 +7,7 @@ import im.facechat.planet.core.SignUtil;
 import im.facechat.planet.exp.PlanetException;
 import im.facechat.planet.module.RTCChat;
 import im.facechat.planet.module.RoomPolicy;
+import im.facechat.planet.msg.Apns;
 import im.facechat.planet.tool.RequestBuilder;
 
 import java.util.HashMap;
@@ -69,15 +70,56 @@ public final class PlanetSDK {
 		return planetURL;
 	}
 
-	public static boolean sendIM(String[] members,String message) throws PlanetException{
+	public static boolean sendIM(String[] members,String message,int expires) throws PlanetException{
 		Map<String,String> params = new HashMap<String,String>();
 		params.put("members",JSON.toJSONString(members));
 		params.put("message",message);
+		params.put("expires",""+expires);
 		String result = signRequest(params,"/api/chat/sendIM");
 		return Boolean.parseBoolean(result);
 	}
 	
-	public static boolean sendIM(String members,String message) throws PlanetException{
-		return sendIM(new String[]{members},message);
+	public static boolean sendIM(String members,String message,int expires) throws PlanetException{
+		return sendIM(new String[]{members},message,expires);
+	}
+	
+	public static boolean sendIMWithApns(String[] members,String message,Apns apns,int expires) throws PlanetException{
+		Map<String,String> params = new HashMap<String,String>();
+		params.put("members",JSON.toJSONString(members));
+		params.put("message",message);
+		params.put("apns",JSON.toJSONString(apns));
+		params.put("expires",""+expires);
+		String result = signRequest(params,"/api/chat/sendIMWithApns");
+		return Boolean.parseBoolean(result);
+	}
+	
+	public static boolean sendIMWithApns(String member,String message,Apns apns,int expires) throws PlanetException{
+		return sendIMWithApns(new String[]{member},message,apns,expires);
+	}
+	
+	public static boolean sendApns(String[] members,Apns apns) throws PlanetException{
+		Map<String,String> params = new HashMap<String,String>();
+		params.put("members",JSON.toJSONString(members));
+		params.put("apns",JSON.toJSONString(apns));
+		String result = signRequest(params,"/api/chat/sendApns");
+		return Boolean.parseBoolean(result);
+	}
+	
+	public static boolean sendApns(String member,Apns apns) throws PlanetException{
+		return sendApns(new String[]{member},apns);
+	}
+	
+	public static boolean sendApnsIfMessageOffline(String[] members,String message,Apns apns,int expires) throws PlanetException{
+		Map<String,String> params = new HashMap<String,String>();
+		params.put("members",JSON.toJSONString(members));
+		params.put("message",message);
+		params.put("apns",JSON.toJSONString(apns));
+		params.put("expires",""+expires);
+		String result = signRequest(params,"/api/chat/sendApnsIfMessageOffline");
+		return Boolean.parseBoolean(result);
+	}
+	
+	public static boolean sendApnsIfMessageOffline(String member,String message,Apns apns,int expires) throws PlanetException{
+		return sendApnsIfMessageOffline(new String[]{member},message,apns,expires);
 	}
 }
