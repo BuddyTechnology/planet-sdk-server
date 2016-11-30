@@ -21,7 +21,7 @@ public class TestSendApns {
 			apns.setIncrBadges(1);
 //			66fd89018de2-2c7e38ef-33d4-4e8b-a6a2-1fbd7a369643
 //			66fd89018de2-3fdde76f-b325-4f2c-8826-ab6e9a129970
-			System.out.println(PlanetSDK.sendApns("66fd89018de2-3fdde76f-b325-4f2c-8826-ab6e9a129970",apns));
+			System.out.println(PlanetSDK.sendApns("66fd89018de2-5244b88c-317d-48fe-b2e7-0927c969f808",apns));
 		}catch(PlanetException e){
 			e.printStackTrace();
 		}
