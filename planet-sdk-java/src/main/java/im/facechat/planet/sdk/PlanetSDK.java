@@ -8,6 +8,7 @@ import im.facechat.planet.exp.PlanetException;
 import im.facechat.planet.module.RTCChat;
 import im.facechat.planet.module.RoomPolicy;
 import im.facechat.planet.msg.Apns;
+import im.facechat.planet.msg.SMS;
 import im.facechat.planet.tool.RequestBuilder;
 
 import java.util.HashMap;
@@ -93,6 +94,18 @@ public final class PlanetSDK {
 	
 	public static boolean sendApns(String member,Apns apns) throws PlanetException{
 		return sendApns(new String[]{member},apns);
+	}
+	
+	public static boolean sendSMS(String phone,SMS sms) throws PlanetException{
+		return sendSMS(new String[]{phone},sms);
+	}
+	
+	public static boolean sendSMS(String[] phones,SMS sms) throws PlanetException{
+		Map<String,String> params = new HashMap<String,String>();
+		params.put("phones",JSON.toJSONString(phones));
+		params.put("sms",JSON.toJSONString(sms));
+		String result = signRequest(params,"/api/chat/sendSMS");
+		return Boolean.parseBoolean(result);
 	}
 	
 	public static boolean sendApnsIfMessageOffline(String[] members,String message,Apns apns,int expires) throws PlanetException{
