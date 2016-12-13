@@ -4,7 +4,6 @@ import im.facechat.planet.cons.PlanetConfig;
 import im.facechat.planet.cons.Planets;
 import im.facechat.planet.exp.PlanetException;
 import im.facechat.planet.tool.MD5Helper;
-import im.facechat.planet.tool.RSAHelper;
 
 import java.security.PrivateKey;
 
@@ -26,10 +25,10 @@ public class SignUtil {
 		}
 	}
 
-	protected static void initRSAKey() throws Exception{
-		if(rsaKey != null){
-			return;
-		}
-		rsaKey = RSAHelper.getPrivateKey(PlanetConfig.rsaKey);
-	}
+//	protected static void initRSAKey() throws Exception{
+//		if(rsaKey != null){
+//			return;
+//		}
+//		rsaKey = RSAHelper.getPrivateKey(PlanetConfig.rsaKey);
+//	}
 }
