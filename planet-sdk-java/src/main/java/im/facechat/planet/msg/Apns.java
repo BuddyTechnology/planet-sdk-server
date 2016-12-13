@@ -4,8 +4,7 @@ import java.util.Map;
 
 public class Apns {
 	
-	private String toMember;
-	private int incrBadges = 0;
+	private int    badges = 0;
 	private String content;
 	private String sound;
 	private String title;
@@ -21,20 +20,12 @@ public class Apns {
 		this.params = params;
 	}
 
-	public String getToMember() {
-		return toMember;
+	public int getBadges() {
+		return badges;
 	}
 
-	public void setToMember(String toMember) {
-		this.toMember = toMember;
-	}
-
-	public int getIncrBadges() {
-		return incrBadges;
-	}
-
-	public void setIncrBadges(int incrBadges) {
-		this.incrBadges = incrBadges;
+	public void setBadges(int badges) {
+		this.badges = badges;
 	}
 
 	public String getContent() {

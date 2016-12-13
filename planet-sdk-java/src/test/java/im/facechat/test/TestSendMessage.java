@@ -16,7 +16,6 @@ public class TestSendMessage {
 			apns.setBackgroud(true);
 			apns.setContent("Hello");
 			apns.setTitle("Tiki-马甲");
-			apns.setIncrBadges(1);
 			
 			System.out.println(PlanetSDK.sendApns("", apns));
 		}catch(PlanetException e){
