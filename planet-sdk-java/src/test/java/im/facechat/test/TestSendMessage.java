@@ -9,15 +9,16 @@ public class TestSendMessage {
 
 	public static void main(String[] args) {
 		try{
-			PlanetConfig.appId = "";
-			PlanetConfig.appToken = "";
+			PlanetConfig.appId = "582e75b7b80baa67261354e9";
+			PlanetConfig.appToken = "3d922c108c521a6605969653528ca7ca";
+			
 			Apns apns = new Apns();
 			apns.setAwake(true);
 			apns.setBackgroud(true);
 			apns.setContent("Hello");
 			apns.setTitle("Tiki-马甲");
 			
-			System.out.println(PlanetSDK.sendApns("", apns));
+			System.out.println(PlanetSDK.sendApns("66fd89018de2-5244b88c-317d-48fe-b2e7-0927c969f808", apns));
 		}catch(PlanetException e){
 			e.printStackTrace();
 		}
