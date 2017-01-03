@@ -19,26 +19,6 @@ public class RTCChat {
 	
 	public List<String> members;//通话的两个人
 
-	public int[] qualities;
-	
-	public int[] linkTypes;
-
-	public int[] getQualities() {
-		return qualities;
-	}
-
-	public void setQualities(int[] qualities) {
-		this.qualities = qualities;
-	}
-
-	public int[] getLinkTypes() {
-		return linkTypes;
-	}
-
-	public void setLinkTypes(int[] linkTypes) {
-		this.linkTypes = linkTypes;
-	}
-
 	public String getSession() {
 		return session;
 	}
