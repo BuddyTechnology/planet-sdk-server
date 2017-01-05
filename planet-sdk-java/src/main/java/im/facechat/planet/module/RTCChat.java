@@ -6,10 +6,6 @@ import java.util.List;
 public class RTCChat {
 	
 	public String session;
-
-	public String roomId;
-	
-	public String appId;
 	
 	public long start;//开始聊天的时间
 	
@@ -18,30 +14,6 @@ public class RTCChat {
 	public boolean finished;//是否已经结束
 	
 	public List<String> members;//通话的两个人
-
-	public String getSession() {
-		return session;
-	}
-
-	public void setSession(String session) {
-		this.session = session;
-	}
-
-	public String getRoomId() {
-		return roomId;
-	}
-
-	public void setRoomId(String roomId) {
-		this.roomId = roomId;
-	}
-
-	public String getAppId() {
-		return appId;
-	}
-
-	public void setAppId(String appId) {
-		this.appId = appId;
-	}
 
 	public long getStart() {
 		return start;
