@@ -6,7 +6,6 @@ import im.facechat.planet.core.HttpCore;
 import im.facechat.planet.core.SignUtil;
 import im.facechat.planet.exp.PlanetException;
 import im.facechat.planet.module.RTCChat;
-import im.facechat.planet.module.RoomPolicy;
 import im.facechat.planet.msg.Apns;
 import im.facechat.planet.msg.SMS;
 import im.facechat.planet.tool.RequestBuilder;
@@ -27,20 +26,6 @@ public final class PlanetSDK {
 		return JSON.parseArray(result,RTCChat.class);
 	}
 	
-	public static String createRoom() throws PlanetException{
-		return createRoom(new RoomPolicy());
-	}
-	
-	public static String createRoom(RoomPolicy recommendPolicy) throws PlanetException{
-		Map<String,String> params = new HashMap<String,String>();
-		params.put("quality",""+recommendPolicy.getQuality());
-		if(recommendPolicy.getMembers() != null){
-			params.put("members",JSON.toJSONString(recommendPolicy.getMembers()));
-		}
-		params.put("disableP2P",""+recommendPolicy.isDisableP2P());
-		return signRequest(params,"/api/rtc/add_room");
-	}
-
 	private static String signRequest(Map<String, String> params,String path) throws PlanetException {
 		params.put("ctime",""+System.currentTimeMillis());
 		params.put("appId",PlanetConfig.appId);
