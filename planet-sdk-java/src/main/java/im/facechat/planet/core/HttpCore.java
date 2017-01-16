@@ -1,7 +1,5 @@
 package im.facechat.planet.core;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +32,7 @@ public class HttpCore {
 			post.addRequestHeader("Content-Type",PostMethod.FORM_URL_ENCODED_CONTENT_TYPE + ";charset=utf-8");
 			post.setRequestBody(requestParams);
 			client.executeMethod(post);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(post.getResponseBodyAsStream()));  
-			StringBuilder sb = new StringBuilder();  
-			String str = "";  
-			while((str = reader.readLine())!=null){  
-			    sb.append(str);  
-			}  
-			return sb.toString();
+			return post.getResponseBodyAsString();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -50,6 +42,8 @@ public class HttpCore {
 	}
 	
 	public static String postData(String baseurl,byte[] data,Map<String,String> params,String ua){
+		HttpClient client = new HttpClient();
+		PostMethod post = new PostMethod(baseurl);
 		try{
 			List<NameValuePair> pairs = getNameValuePairs(params);
 			
@@ -62,11 +56,7 @@ public class HttpCore {
 				filePart.setCharSet("utf-8");
 				fps.add(filePart);	
 			}
-			
-			HttpClient client = new HttpClient();
 			client.getParams().setParameter(HttpMethodParams.USER_AGENT,ua);
-			PostMethod post = new PostMethod(baseurl);
-			
 			MultipartRequestEntity mre = new MultipartRequestEntity(fps.toArray(new Part[fps.size()]),post.getParams());
 			
 			post.setRequestEntity(mre);
@@ -76,7 +66,9 @@ public class HttpCore {
 			
 			return post.getResponseBodyAsString();
 		}catch(Exception e){
-			
+			e.printStackTrace();
+		}finally{
+			post.releaseConnection();
 		}
 		return null;
 	}
