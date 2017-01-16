@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.SimpleHttpConnectionManager;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.multipart.ByteArrayPartSource;
 import org.apache.commons.httpclient.methods.multipart.FilePart;
@@ -18,7 +19,7 @@ import org.apache.commons.httpclient.params.HttpMethodParams;
 public class HttpCore {
 	
 	public static String post(String baseurl,Map<String,String> params,String ua){
-		HttpClient client = new HttpClient();
+		HttpClient client = new HttpClient(new SimpleHttpConnectionManager(true));
 		if(ua != null){
 			client.getParams().setParameter(HttpMethodParams.USER_AGENT,ua);
 		}
@@ -31,6 +32,8 @@ public class HttpCore {
 			
 			post.addRequestHeader("Content-Type",PostMethod.FORM_URL_ENCODED_CONTENT_TYPE + ";charset=utf-8");
 			post.setRequestBody(requestParams);
+			post.setRequestHeader("Connection","close");
+			
 			client.executeMethod(post);
 			return post.getResponseBodyAsString();
 		}catch(Exception e){
@@ -50,7 +53,7 @@ public class HttpCore {
 	}
 
 	public static String postData(String baseurl,byte[] data,Map<String,String> params,String ua){
-		HttpClient client = new HttpClient();
+		HttpClient client = new HttpClient(new SimpleHttpConnectionManager(true));
 		PostMethod post = new PostMethod(baseurl);
 		try{
 			List<NameValuePair> pairs = getNameValuePairs(params);
@@ -68,6 +71,7 @@ public class HttpCore {
 			MultipartRequestEntity mre = new MultipartRequestEntity(fps.toArray(new Part[fps.size()]),post.getParams());
 			
 			post.setRequestEntity(mre);
+			post.setRequestHeader("Connection","close");
 			post.getParams().setContentCharset("utf-8");
 			
 			client.executeMethod(post);
