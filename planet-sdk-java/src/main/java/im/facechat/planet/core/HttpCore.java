@@ -36,11 +36,19 @@ public class HttpCore {
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			post.releaseConnection();
+			closeClient(client,post);
 		}
 		return null;
 	}
 	
+	private static void closeClient(HttpClient client, PostMethod post) {
+		try{
+			post.releaseConnection();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
 	public static String postData(String baseurl,byte[] data,Map<String,String> params,String ua){
 		HttpClient client = new HttpClient();
 		PostMethod post = new PostMethod(baseurl);
@@ -68,7 +76,7 @@ public class HttpCore {
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			post.releaseConnection();
+			closeClient(client,post);
 		}
 		return null;
 	}
