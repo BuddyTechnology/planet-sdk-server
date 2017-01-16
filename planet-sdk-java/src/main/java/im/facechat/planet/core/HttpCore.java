@@ -42,7 +42,9 @@ public class HttpCore {
 			}  
 			return sb.toString();
 		}catch(Exception e){
-			
+			e.printStackTrace();
+		}finally{
+			post.releaseConnection();
 		}
 		return null;
 	}
