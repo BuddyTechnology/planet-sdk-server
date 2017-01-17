@@ -4,10 +4,11 @@ import java.util.List;
 
 
 public class RTCChat {
+	
 	public String session;
 	public long start;//开始聊天的时间
 	public long end;//最后一次聊天的时间
-	public boolean hadCalled;//是否已经结束
+	public boolean finished;//是否已经结束
 	public List<String> members;//通话的两个人
 	public String nt;//netType类型，2G,3G,4G,wifi
 	public String isp;//运营商,netProvider
@@ -141,13 +142,13 @@ public class RTCChat {
 	public void setSession(String session) {
 		this.session = session;
 	}
-
-	public boolean isHadCalled() {
-		return hadCalled;
+	
+	public boolean isFinished() {
+		return finished;
 	}
 
-	public void setHadCalled(boolean hadCalled) {
-		this.hadCalled = hadCalled;
+	public void setFinished(boolean finished) {
+		this.finished = finished;
 	}
 
 	public List<String> getMembers() {
