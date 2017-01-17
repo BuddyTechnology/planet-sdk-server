@@ -19,9 +19,9 @@ import com.alibaba.fastjson.JSONObject;
 
 public final class PlanetSDK {
 
-	public static List<RTCChat> getChats(String[] sessions) throws PlanetException{
+	public static List<RTCChat> getChats(String[] roomIds) throws PlanetException{
 		Map<String,String> params = new HashMap<String,String>();
-		params.put("sessions",JSON.toJSONString(sessions));
+		params.put("roomIds",JSON.toJSONString(roomIds));
 		String result = signRequest(params,"/api/rtc/get_chats");
 		return JSON.parseArray(result,RTCChat.class);
 	}
