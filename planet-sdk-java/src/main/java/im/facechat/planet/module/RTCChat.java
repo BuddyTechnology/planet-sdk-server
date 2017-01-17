@@ -9,6 +9,7 @@ public class RTCChat {
 	public long start;//开始聊天的时间
 	public long end;//最后一次聊天的时间
 	public boolean finished;//是否已经结束
+	public boolean suctalk;
 	public List<String> members;//通话的两个人
 	public String nt;//netType类型，2G,3G,4G,wifi
 	public String isp;//运营商,netProvider
