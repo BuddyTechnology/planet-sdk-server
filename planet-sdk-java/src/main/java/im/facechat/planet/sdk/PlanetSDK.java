@@ -5,6 +5,7 @@ import im.facechat.planet.cons.PlanetConfig;
 import im.facechat.planet.core.HttpCore;
 import im.facechat.planet.core.SignUtil;
 import im.facechat.planet.exp.PlanetException;
+import im.facechat.planet.module.GeoIP;
 import im.facechat.planet.module.RTCChat;
 import im.facechat.planet.msg.Apns;
 import im.facechat.planet.msg.SMS;
@@ -107,5 +108,10 @@ public final class PlanetSDK {
 		return sendApnsIfMessageOffline(new String[]{member},message,apns,expires);
 	}
 	
-	public static 
+	public static GeoIP[] getGeoIPs(String[] ips) throws PlanetException{
+		Map<String,String> params = new HashMap<String,String>();
+		params.put("ips",JSON.toJSONString(ips));
+		String result = signRequest(params,"/api/chat/sendApnsIfMessageOffline");
+		return JSON.parseArray(result,GeoIP.class).toArray(new GeoIP[0]);
+	}
 }
