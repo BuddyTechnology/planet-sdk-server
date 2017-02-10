@@ -106,4 +106,6 @@ public final class PlanetSDK {
 	public static boolean sendApnsIfMessageOffline(String member,String message,Apns apns,int expires) throws PlanetException{
 		return sendApnsIfMessageOffline(new String[]{member},message,apns,expires);
 	}
+	
+	public static 
 }
