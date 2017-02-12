@@ -111,7 +111,7 @@ public final class PlanetSDK {
 	public static GeoIP[] getGeoIPs(String[] ips) throws PlanetException{
 		Map<String,String> params = new HashMap<String,String>();
 		params.put("ips",JSON.toJSONString(ips));
-		String result = signRequest(params,"/api/chat/sendApnsIfMessageOffline");
+		String result = signRequest(params,"/api/base/get_geo_ips");
 		return JSON.parseArray(result,GeoIP.class).toArray(new GeoIP[0]);
 	}
 }
